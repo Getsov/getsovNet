@@ -1,78 +1,68 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        getsovNet
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="mt-4">
+    <section>
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold">Articles</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4">
+          <ArticleCard
+            v-for="article in articles"
+            :key="article.title"
+            :title="article.title"
+            :description="article.description"
+            :author="article.author"
+            :date="article.date.toLocaleDateString()"
+          />
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
 <script>
-export default {}
+import ArticleCard from "../components/ui/ArticleCard.vue";
+
+export default {
+  components: {
+    ArticleCard
+  },
+  asyncData() {
+    const articles = [
+      {
+        title: "How to make your articles Vuetiful",
+        description:
+          "This article guides you through all the steps to make an article shine with your favourite framework, Vue",
+        author: {
+          name: "Naruto Uzumaki",
+          image:
+            "https://a.storyblok.com/f/83078/500x500/cb27fcd15a/naruto-avatar.jpg"
+        },
+        date: new Date()
+      },
+      {
+        title: " 2How to make your articles Vuetiful",
+        description:
+          "This article guides you through all the steps to make an article shine with your favourite framework, Vue",
+        author: {
+          name: "Naruto Uzumaki",
+          image:
+            "https://a.storyblok.com/f/83078/500x500/cb27fcd15a/naruto-avatar.jpg"
+        },
+        date: new Date()
+      },
+      {
+        title: " 3How to make your articles Vuetiful",
+        description:
+          "This article guides you through all the steps to make an article shine with your favourite framework, Vue",
+        author: {
+          name: "Naruto Uzumaki",
+          image:
+            "https://a.storyblok.com/f/83078/500x500/cb27fcd15a/naruto-avatar.jpg"
+        },
+        date: new Date()
+      }
+    ];
+
+    return { articles };
+  }
+};
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
