@@ -4,9 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        main: theme.colors.teal["500"] // #38b2ac
+        main: "#3880ff" // #38b2ac
       }
     }
-  }
+  },
+  plugins: [require("@tailwindcss/typography")]
   // ...
 };
